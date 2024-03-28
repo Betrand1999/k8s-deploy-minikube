@@ -1,4 +1,4 @@
-name: deploy to minikube cluster 
+name: deploy to minikube cluster must work
 on: 
  push:
    branches:
