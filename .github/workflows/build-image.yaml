@@ -17,6 +17,8 @@ jobs:
          password: ${{secrets.DOCKER_PASSWORD}}
      - name: build docker image 
        run: docker build -t new_app . 
+     - name: run docker image 
+       run: docker run -d -p 7070:70 new_app
      - name: tag image 
        run: docker tag new_app:latest betrand1997/new_app:latest 
      - name: push image 
