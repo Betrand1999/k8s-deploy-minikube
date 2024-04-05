@@ -25,5 +25,5 @@ jobs:
      - name: push image  
        run: docker push betrand1997/test-image:latest 
      - name: os
-       run: cat /etc/os-release
+       run: sw_vers
 
