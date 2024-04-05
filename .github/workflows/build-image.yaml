@@ -19,7 +19,7 @@ jobs:
      - name: build a docker image 
        run: docker build -t test-image .
      - name: run docker image 
-       run:  docker run -d test-image
+       run:  docker run -d -p 8080:80 test-image
      - name: docker tag image 
        run: docker tag test-image:latest betrand1997/test-image:latest 
      - name: push image  
