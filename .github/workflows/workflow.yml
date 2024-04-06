@@ -19,6 +19,20 @@ jobs:
         kubectl create -f ./kubernetes/service.yaml 
         kubectl get deployment -n dev-namespace 
         kubectl get service -n dev-namespace
-        kubectl port-forward service/myservice 9090:80 -n dev-namespace
+       
 
         kubectl get ns 
+  second-job:
+    runs-on: self-hosted
+    needs: build
+    steps:
+      - name: port forward 
+        run: |
+           kubectl port-forward service/myservice 9090:80 -n dev-namespace
+            
+
+
+
+
+
+
