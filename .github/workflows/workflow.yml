@@ -1,0 +1,22 @@
+name: deploy to minikube
+on: 
+ push:
+   branches:
+     - dev-branch
+
+
+jobs:
+  build:
+   runs-on: self-hosted 
+
+   steps:
+     - name: actions/checkout 
+       uses: actions/checkout@v2 
+     - name: deploy to minikube 
+       run: | 
+        k create -f ./kubernetes/namespace.yaml 
+        k create -f ./kubernetes/deploymant.yaml 
+        k create -f ./kubernetes/service.yaml 
+        k get deployment -n dev-namespace 
+        k get service -n dev-namespace
+        k port-forwward 9090:80 service/ myservice -n dev-namespace
