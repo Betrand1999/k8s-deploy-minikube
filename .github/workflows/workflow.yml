@@ -15,7 +15,7 @@ jobs:
      - name: deploy to minikube 
        run: | 
         kubectl create -f ./kubernetes/namespace.yaml 
-        kubectl create -f ./kubernetes/deploymant.yaml 
+        kubectl create -f ./kubernetes/deployment.yaml 
         kubectl create -f ./kubernetes/service.yaml 
         kubectl get deployment -n dev-namespace 
         kubectl get service -n dev-namespace
