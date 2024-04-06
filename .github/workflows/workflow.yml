@@ -20,3 +20,4 @@ jobs:
         k get deployment -n dev-namespace 
         k get service -n dev-namespace
         k port-forwward 9090:80 service/ myservice -n dev-namespace
+        k get ns 
