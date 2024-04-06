@@ -19,7 +19,7 @@ jobs:
 
      - name: deploy to azure aks 
        run: | 
-        kubectl create -f ./kubernetes/namespace.yaml --validate=false
+        kubectl create -f ./kubernetes/namespace.yaml 
  
         kubectl create -f ./kubernetes/deployment.yaml 
         kubectl create -f ./kubernetes/service.yaml 
