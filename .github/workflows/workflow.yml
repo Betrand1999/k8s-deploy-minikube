@@ -1,4 +1,4 @@
-name: deploy to minikube ok ok 
+name: deploy to  azure
 on: 
  push:
    branches:
@@ -7,12 +7,17 @@ on:
 
 jobs:
   build:
-   runs-on: self-hosted 
+   runs-on: ubuntu-latest 
 
    steps:
      - name: actions/checkout 
        uses: actions/checkout@v2 
-     - name: deploy to minikube 
+     - name: login to azure 
+       uses: azure/login@v1
+       with:
+         creds: ${{secrets.AZURE_CREDENTIALS}}
+
+     - name: deploy to azure aks 
        run: | 
         kubectl create -f ./kubernetes/namespace.yaml 
         kubectl create -f ./kubernetes/deployment.yaml 
@@ -23,7 +28,7 @@ jobs:
 
         kubectl get ns 
   second-job:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest 
     needs: build
     steps:
       - name: port forward 
