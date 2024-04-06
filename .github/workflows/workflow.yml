@@ -14,10 +14,10 @@ jobs:
        uses: actions/checkout@v2 
      - name: deploy to minikube 
        run: | 
-        k create -f ./kubernetes/namespace.yaml 
-        k create -f ./kubernetes/deploymant.yaml 
-        k create -f ./kubernetes/service.yaml 
-        k get deployment -n dev-namespace 
-        k get service -n dev-namespace
-        k port-forwward 9090:80 service/ myservice -n dev-namespace
-        k get ns 
+        kubectl create -f ./kubernetes/namespace.yaml 
+        kubectl create -f ./kubernetes/deploymant.yaml 
+        kubectl create -f ./kubernetes/service.yaml 
+        kubectl get deployment -n dev-namespace 
+        kubectl get service -n dev-namespace
+        kubectl port-forwward 9090:80 service/ myservice -n dev-namespace
+        kubectl get ns 
